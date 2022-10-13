@@ -14,14 +14,15 @@ string alwaysTaken() {return "T";} //the "always taken" predictor
 
 string neverTaken() {return "NT";} //the "never taken" predictor
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) { //to run prigram: ./predictors test_input.txt output.txt
+
     unsigned long long addr, target; string behavior;   //parsed information from input line stored in these variables
                                                             //addr = program counter value (hex address)
                                                             //behavior = branch taken (T) or not taken (NT)
                                                             //target = target of the branch (hex address)
     string line;                                        //line = current line of input file during while loop
-    ifstream infile("test_input.txt");                  //text file where input lines come from
-    ofstream outfile("output.txt");
+    ifstream infile(argv[1]);                  //text file where input lines come from
+    ofstream outfile(argv[2]);
 
     int ATcorrect = 0, NTcorrect = 0, BOBcorrect = 0;   //tallies of how many times each method predicted correctly
 
@@ -43,5 +44,3 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
-
-//todo: make it get "test_input.txt" from command line argument.
