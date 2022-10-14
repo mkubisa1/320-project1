@@ -8,6 +8,7 @@
 #include "getBinary.h"
 #include "bimodalOneBit.h"
 #include "bimodalTwoBit.h"
+#include "gShare.h"
 
 using namespace std;
 
@@ -36,6 +37,7 @@ int main(int argc, char *argv[]) { //to run program: ./predictors test_input.txt
 
     bimodalOneBit bob16(16), bob32(32), bob128(128), bob256(256), bob512(512), bob1024(1024), bob2048(2048);
     bimodalTwoBit btb16(16), btb32(32), btb128(128), btb256(256), btb512(512), btb1024(1024), btb2048(2048);
+    gShare gs(3);
     int instCount = 0; //the number of instructions/lines in infile
 
     while(getline(infile, line)) {
@@ -45,6 +47,7 @@ int main(int argc, char *argv[]) { //to run program: ./predictors test_input.txt
         stringstream s(line);
         s >> std::hex >> addr >> behavior >> std::hex >> target; //extract each portion of the input line and place into necessary variables
 
+        /*
         //assert correctness of each method:
         cout << "running alwaysTaken()..." << endl;
         if(alwaysTaken() == behavior) {correctCount[0] += 1;}
@@ -68,6 +71,7 @@ int main(int argc, char *argv[]) { //to run program: ./predictors test_input.txt
         if(btb512.predict(addr, behavior))  {correctCount[13] += 1;}
         if(btb1024.predict(addr, behavior)) {correctCount[14] += 1;}
         if(btb2048.predict(addr, behavior)) {correctCount[15] += 1;}
+        */
     }
     infile.close();
     
