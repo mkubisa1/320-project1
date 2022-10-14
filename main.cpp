@@ -7,6 +7,7 @@
 
 #include "getBinary.h"
 #include "bimodalOneBit.h"
+#include "bimodalTwoBit.h"
 
 using namespace std;
 
@@ -34,6 +35,7 @@ int main(int argc, char *argv[]) { //to run program: ./predictors test_input.txt
                                                                                 // [26] = BTB statistics
 
     bimodalOneBit bob16(16), bob32(32), bob128(128), bob256(256), bob512(512), bob1024(1024), bob2048(2048);
+    bimodalTwoBit btb16(16), btb32(32), btb128(128), btb256(256), btb512(512), btb1024(1024), btb2048(2048);
 
     while(getline(infile, line)) {
 
@@ -43,6 +45,7 @@ int main(int argc, char *argv[]) { //to run program: ./predictors test_input.txt
         //assert correctness of each method:
         if(alwaysTaken() == behavior) {correctCount[0] += 1;}
         if(neverTaken() == behavior) {correctCount[1] += 1;}
+
         if(bob16.predict(addr, behavior))   {correctCount[2] += 1;}
         if(bob32.predict(addr, behavior))   {correctCount[3] += 1;}
         if(bob128.predict(addr, behavior))  {correctCount[4] += 1;}
@@ -50,9 +53,15 @@ int main(int argc, char *argv[]) { //to run program: ./predictors test_input.txt
         if(bob512.predict(addr, behavior))  {correctCount[6] += 1;}
         if(bob1024.predict(addr, behavior)) {correctCount[7] += 1;}
         if(bob2048.predict(addr, behavior)) {correctCount[8] += 1;}
-    }
 
-    //cout << "one bit bimodal was correct " << BOBcorrect << " times." << endl;
+        // if(btb16.predict(addr, behavior))   {correctCount[9] += 1;}
+        // if(btb32.predict(addr, behavior))   {correctCount[10] += 1;}
+        // if(btb128.predict(addr, behavior))  {correctCount[11] += 1;}
+        // if(btb256.predict(addr, behavior))  {correctCount[12] += 1;}
+        // if(btb512.predict(addr, behavior))  {correctCount[13] += 1;}
+        // if(btb1024.predict(addr, behavior)) {correctCount[14] += 1;}
+        if(btb2048.predict(addr, behavior)) {correctCount[15] += 1;}
+    }
 
     return 0;
 }
