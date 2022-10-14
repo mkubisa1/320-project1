@@ -16,7 +16,7 @@ bimodalOneBit::bimodalOneBit() { //default constructor
 bimodalOneBit::bimodalOneBit(int inputSize) {
     tableSize = inputSize;
     binaryLength = getBinary(inputSize-1,0).length(); //get how long each binary table entry should be, using the maximum possible value
-    //cout << "each prediction table entry should be " << binaryLength << " bits long" << endl;
+    cout << "each prediction table entry should be " << binaryLength << " bits long for a " << inputSize << " size table" << endl;
     
     for(int i = 0; i < tableSize; i++) { 
         table[getBinary(i,binaryLength)] = "T"; 

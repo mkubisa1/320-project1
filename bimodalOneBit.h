@@ -14,8 +14,8 @@ class bimodalOneBit {
 
     public:
         bimodalOneBit();                //default constructor will assume tableSize 16
-        bimodalOneBit(int tableSize);   //this is the constructor usually used
-        map<string,string> getTable() {return table;}
+        bimodalOneBit(int inputSize);   //this is the constructor usually used
+        //map<string,string> getTable() {return table;}
         bool predict(long long unsigned int inputAddr, string actualOutcome);
 };
 
