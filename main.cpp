@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) { //to run program: ./predictors test_input.txt
 
     bimodalOneBit bob16(16), bob32(32), bob128(128), bob256(256), bob512(512), bob1024(1024), bob2048(2048);
     bimodalTwoBit btb16(16), btb32(32), btb128(128), btb256(256), btb512(512), btb1024(1024), btb2048(2048);
-    gShare gs(3);
+    gShare gs3(3), gs4(4), gs5(5), gs6(6), gs7(7), gs8(8), gs9(9), gs10(10), gs11(11);
     int instCount = 0; //the number of instructions/lines in infile
 
     while(getline(infile, line)) {
@@ -72,15 +72,30 @@ int main(int argc, char *argv[]) { //to run program: ./predictors test_input.txt
         if(btb1024.predict(addr, behavior)) {correctCount[14] += 1;}
         if(btb2048.predict(addr, behavior)) {correctCount[15] += 1;}
         */
+
+       if(gs3.predict(addr, behavior))  {correctCount[16] += 1;}
+    //    if(gs4.predict(addr, behavior))  {correctCount[17] += 1;}
+    //    if(gs5.predict(addr, behavior))  {correctCount[18] += 1;}
+    //    if(gs6.predict(addr, behavior))  {correctCount[19] += 1;}
+    //    if(gs7.predict(addr, behavior))  {correctCount[20] += 1;}
+    //    if(gs8.predict(addr, behavior))  {correctCount[21] += 1;}
+    //    if(gs9.predict(addr, behavior))  {correctCount[22] += 1;}
+    //    if(gs10.predict(addr, behavior)) {correctCount[23] += 1;}
+    //    if(gs11.predict(addr, behavior)) {correctCount[24] += 1;}
+        
     }
     infile.close();
-    
-    outfile << correctCount[0] << "," << instCount << ";" << endl;                          //alwaysTaken
-    outfile << correctCount[1] << "," << instCount << ";" << endl;                          //alwaysNotTaken
-    for(int i = 2; i < 9; i++) { outfile << correctCount[i] << "," << instCount << "; ";}   //bimodalOneBit
+
+    outfile.clear();                                                                        //empty the text file before writing to it
+    // outfile << correctCount[0] << "," << instCount << ";" << endl;                          //alwaysTaken
+    // outfile << correctCount[1] << "," << instCount << ";" << endl;                          //alwaysNotTaken
+    // for(int i = 2; i < 9; i++) { outfile << correctCount[i] << "," << instCount << "; ";}   //bimodalOneBit
+    // outfile << endl;
+    // for(int i = 9; i < 16; i++) { outfile << correctCount[i] << "," << instCount << "; ";}  //bimodalTwoBit
+    // outfile << endl;
+    for(int i = 16; i < 25; i++) { outfile << correctCount[i] << "," << instCount << "; ";}  //gShare
     outfile << endl;
-    for(int i = 9; i < 16; i++) { outfile << correctCount[i] << "," << instCount << "; ";}  //bimodalTwoBit
-    outfile << endl;
+
 
     outfile.close();
 

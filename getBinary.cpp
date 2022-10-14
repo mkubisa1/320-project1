@@ -32,3 +32,16 @@ string getBinary(unsigned long long n, int customLength) {
 
     return output;
 }
+
+int getDecimal(string str) {
+   string n = str;
+   int val = 0;
+   int temp = 1;
+   int len = n.length();
+   for (int i = len - 1; i >= 0; i--) {
+      if (n[i] == '1')
+      val += temp;
+      temp = temp * 2;
+   }
+   return val;
+}

@@ -15,6 +15,7 @@ class gShare {
     public:
         gShare();
         gShare(int ghrAccuracy);    //in practice, int will vary from 3 to 11 bits
+        bool predict(long long unsigned int inputAddr, string actualOutcome);
 };
 
 #endif
