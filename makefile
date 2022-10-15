@@ -1,7 +1,7 @@
 all: predictors
 
-predictors: main.o getBinary.o bimodalOneBit.o bimodalTwoBit.o gShare.o Tournament.o
-	g++ main.o getBinary.o bimodalOneBit.o bimodalTwoBit.o gShare.o Tournament.o -o predictors
+predictors: main.o getBinary.o bimodalOneBit.o bimodalTwoBit.o gShare.o Tournament.o BOBwithBTB.o
+	g++ main.o getBinary.o bimodalOneBit.o bimodalTwoBit.o gShare.o Tournament.o BOBwithBTB.o -o predictors
 
 main.o: main.cpp getBinary.h bimodalOneBit.h gShare.h 
 	g++ -c main.cpp getBinary.h bimodalOneBit.h gShare.h 
@@ -21,6 +21,9 @@ gShare.o: gShare.h gShare.cpp
 
 Tournament.o: bimodalTwoBit.h bimodalTwoBit.cpp gShare.h gShare.cpp Tournament.h Tournament.cpp
 	g++ -c bimodalTwoBit.h bimodalTwoBit.cpp gShare.h gShare.cpp Tournament.h Tournament.cpp
+
+BOBwithBTB.o: BOBwithBTB.h BOBwithBTB.cpp
+	g++ -c BOBwithBTB.h BOBwithBTB.cpp
 
 clean:
 	rm -f *.o predictors a.out *.gch

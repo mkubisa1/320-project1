@@ -10,6 +10,7 @@
 #include "bimodalTwoBit.h"
 #include "gShare.h"
 #include "Tournament.h"
+#include "BOBwithBTB.h"
 
 using namespace std;
 
@@ -40,6 +41,7 @@ int main(int argc, char *argv[]) { //to run program: ./predictors test_input.txt
     bimodalTwoBit btb16(16), btb32(32), btb128(128), btb256(256), btb512(512), btb1024(1024), btb2048(2048);
     gShare gs3(3), gs4(4), gs5(5), gs6(6), gs7(7), gs8(8), gs9(9), gs10(10), gs11(11);
     Tournament tour;
+    BOBwithBTB bobBuffer(512);
 
     int instCount = 0; //the number of instructions/lines in infile
 
@@ -52,6 +54,7 @@ int main(int argc, char *argv[]) { //to run program: ./predictors test_input.txt
         s >> std::hex >> addr >> behavior >> std::hex >> target; //extract each portion of the input line and place into necessary variables
 
         //assert correctness of each method:
+
         
         if(alwaysTaken() == behavior) {correctCount[0] += 1;}
         
@@ -84,6 +87,9 @@ int main(int argc, char *argv[]) { //to run program: ./predictors test_input.txt
         if(gs11.predict(addr, behavior)) {correctCount[24] += 1;}
 
         if(tour.predict(addr, behavior)) {correctCount[25] += 1;}
+        
+
+        if(bobBuffer.predictTarget(addr, behavior, target)) {correctCount[26] += 1;}
     }
     infile.close();
 
@@ -95,11 +101,12 @@ int main(int argc, char *argv[]) { //to run program: ./predictors test_input.txt
     outfile << endl;
     for(int i = 9; i < 16; i++) { outfile << correctCount[i] << "," << instCount << "; ";}  //bimodalTwoBit
     outfile << endl;
-    for(int i = 16; i < 25; i++) { outfile << correctCount[i] << "," << instCount << "; ";}  //gShare
+    for(int i = 16; i < 25; i++) { outfile << correctCount[i] << "," << instCount << "; ";} //gShare
     outfile << endl;
-    outfile << correctCount[25] << "," << instCount << ";" << endl;                          //tournament
+    outfile << correctCount[25] << "," << instCount << ";";                                 //tournament
     outfile << endl;
-
+    outfile << correctCount[26] << "," << bobBuffer.getAttempts() << ";";                   //branch target buffer
+    outfile << endl;
 
     outfile.close();
 

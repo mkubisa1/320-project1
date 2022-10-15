@@ -40,5 +40,6 @@ bool bimodalOneBit::predict(long long unsigned int inputAddr, string actualOutco
         return false;
     }
 
-    return "";
+    cout << "bimodalOneBit error: could not finish prediction. returning false." << endl;
+    return false;
 };
