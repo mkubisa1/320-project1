@@ -6,6 +6,8 @@
 #include <iostream>
 #include "getBinary.h"
 
+using namespace std;
+
 class bimodalOneBit {
     private:
         map<string,string> table;

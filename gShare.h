@@ -6,6 +6,8 @@
 #include <iostream>
 #include "getBinary.h"
 
+using namespace std;
+
 class gShare {
     private:
         int tableSize = 2048;
