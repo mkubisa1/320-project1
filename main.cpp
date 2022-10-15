@@ -74,14 +74,14 @@ int main(int argc, char *argv[]) { //to run program: ./predictors test_input.txt
         */
 
        if(gs3.predict(addr, behavior))  {correctCount[16] += 1;}
-    //    if(gs4.predict(addr, behavior))  {correctCount[17] += 1;}
-    //    if(gs5.predict(addr, behavior))  {correctCount[18] += 1;}
-    //    if(gs6.predict(addr, behavior))  {correctCount[19] += 1;}
-    //    if(gs7.predict(addr, behavior))  {correctCount[20] += 1;}
-    //    if(gs8.predict(addr, behavior))  {correctCount[21] += 1;}
-    //    if(gs9.predict(addr, behavior))  {correctCount[22] += 1;}
-    //    if(gs10.predict(addr, behavior)) {correctCount[23] += 1;}
-    //    if(gs11.predict(addr, behavior)) {correctCount[24] += 1;}
+       if(gs4.predict(addr, behavior))  {correctCount[17] += 1;}
+       if(gs5.predict(addr, behavior))  {correctCount[18] += 1;}
+       if(gs6.predict(addr, behavior))  {correctCount[19] += 1;}
+       if(gs7.predict(addr, behavior))  {correctCount[20] += 1;}
+       if(gs8.predict(addr, behavior))  {correctCount[21] += 1;}
+       if(gs9.predict(addr, behavior))  {correctCount[22] += 1;}
+       if(gs10.predict(addr, behavior)) {correctCount[23] += 1;}
+       if(gs11.predict(addr, behavior)) {correctCount[24] += 1;}
         
     }
     infile.close();
