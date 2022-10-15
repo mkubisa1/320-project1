@@ -18,6 +18,7 @@ class bimodalTwoBit {
         bimodalTwoBit();
         bimodalTwoBit(int entriesCount);
         bool predict(long long unsigned int inputAddr, string actualOutcome);
+        bool predict(string pcBitsFull, string actualOutcome);
 };
 
 #endif

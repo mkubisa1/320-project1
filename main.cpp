@@ -52,7 +52,6 @@ int main(int argc, char *argv[]) { //to run program: ./predictors test_input.txt
         s >> std::hex >> addr >> behavior >> std::hex >> target; //extract each portion of the input line and place into necessary variables
 
         //assert correctness of each method:
-
         
         if(alwaysTaken() == behavior) {correctCount[0] += 1;}
         
@@ -83,6 +82,8 @@ int main(int argc, char *argv[]) { //to run program: ./predictors test_input.txt
         if(gs9.predict(addr, behavior))  {correctCount[22] += 1;}
         if(gs10.predict(addr, behavior)) {correctCount[23] += 1;}
         if(gs11.predict(addr, behavior)) {correctCount[24] += 1;}
+
+        if(tour.predict(addr, behavior)) {correctCount[25] += 1;}
     }
     infile.close();
 
@@ -95,6 +96,8 @@ int main(int argc, char *argv[]) { //to run program: ./predictors test_input.txt
     for(int i = 9; i < 16; i++) { outfile << correctCount[i] << "," << instCount << "; ";}  //bimodalTwoBit
     outfile << endl;
     for(int i = 16; i < 25; i++) { outfile << correctCount[i] << "," << instCount << "; ";}  //gShare
+    outfile << endl;
+    outfile << correctCount[25] << "," << instCount << ";" << endl;                          //tournament
     outfile << endl;
 
 
