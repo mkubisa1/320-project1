@@ -14,13 +14,15 @@ class BOBwithBTB { //bimodalOneBit with Brach Target Buffer support
         int tableSize;      
         int binaryLength;   
 
-        map<long long unsigned int,long long unsigned int> btbTable;    //btbTable is indexed with pcBits; each pcBits corresponds to a target.
-        int btbAttempts;
+        map<string,long long unsigned int> btbTable;    //btbTable is indexed with pcBits; each pcBits corresponds to a target.
+        int numPredictions = 0;
+        int btbCorrect = 0;
 
     public:
         BOBwithBTB(int entriesCount);
-        bool predictTarget(long long unsigned int inputAddr, string actualOutcome, long long unsigned int inputTarget);
-        int getAttempts() {return btbAttempts;}
+        void predictTarget(long long unsigned int inputAddr, string actualOutcome, long long unsigned int inputTarget);
+        int getAttempts() {return numPredictions;}
+        int getCorrect() {return btbCorrect;}
 };
 
 #endif

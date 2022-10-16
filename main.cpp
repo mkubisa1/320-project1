@@ -55,7 +55,6 @@ int main(int argc, char *argv[]) { //to run program: ./predictors test_input.txt
 
         //assert correctness of each method:
 
-        
         if(alwaysTaken() == behavior) {correctCount[0] += 1;}
         
         if(neverTaken() == behavior) {correctCount[1] += 1;}
@@ -87,9 +86,8 @@ int main(int argc, char *argv[]) { //to run program: ./predictors test_input.txt
         if(gs11.predict(addr, behavior)) {correctCount[24] += 1;}
 
         if(tour.predict(addr, behavior)) {correctCount[25] += 1;}
-        
 
-        if(bobBuffer.predictTarget(addr, behavior, target)) {correctCount[26] += 1;}
+        bobBuffer.predictTarget(addr, behavior, target);
     }
     infile.close();
 
@@ -105,8 +103,7 @@ int main(int argc, char *argv[]) { //to run program: ./predictors test_input.txt
     outfile << endl;
     outfile << correctCount[25] << "," << instCount << ";";                                 //tournament
     outfile << endl;
-    outfile << correctCount[26] << "," << bobBuffer.getAttempts() << ";";                   //branch target buffer
-    outfile << endl;
+    outfile << bobBuffer.getCorrect() << "," << bobBuffer.getAttempts() << ";";             //branch target buffer
 
     outfile.close();
 
